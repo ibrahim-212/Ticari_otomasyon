@@ -11,9 +11,9 @@ using System.Data.SqlClient;
 
 namespace Ticari_otomasyon
 {
-    public partial class ÜRÜNLER : Form
+    public partial class URUNLER : Form
     {
-        public ÜRÜNLER()
+        public URUNLER()
         {
             InitializeComponent();
         }

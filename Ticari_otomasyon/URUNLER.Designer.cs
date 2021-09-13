@@ -1,6 +1,6 @@
 ﻿namespace Ticari_otomasyon
 {
-    partial class ÜRÜNLER
+    partial class URUNLER
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ÜRÜNLER));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(URUNLER));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.BtnGüncelle = new DevExpress.XtraEditors.SimpleButton();
             this.BtnSil = new DevExpress.XtraEditors.SimpleButton();
@@ -98,7 +98,7 @@
             // 
             // BtnGüncelle
             // 
-            this.BtnGüncelle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.BtnGüncelle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnGüncelle.ImageOptions.Image")));
             this.BtnGüncelle.Location = new System.Drawing.Point(72, 435);
             this.BtnGüncelle.Name = "BtnGüncelle";
             this.BtnGüncelle.Size = new System.Drawing.Size(143, 39);
@@ -108,7 +108,7 @@
             // 
             // BtnSil
             // 
-            this.BtnSil.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.BtnSil.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnSil.ImageOptions.Image")));
             this.BtnSil.Location = new System.Drawing.Point(72, 390);
             this.BtnSil.Name = "BtnSil";
             this.BtnSil.Size = new System.Drawing.Size(143, 39);
@@ -286,15 +286,16 @@
             // 
             this.sqlDataSource1.Name = "sqlDataSource1";
             // 
-            // ÜRÜNLER
+            // URUNLER
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1160, 630);
+            this.ClientSize = new System.Drawing.Size(1384, 861);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.groupControl1);
-            this.Name = "ÜRÜNLER";
+            this.Name = "URUNLER";
             this.Text = "ÜRÜNLER";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ÜRÜNLER_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);

@@ -16,15 +16,25 @@ namespace Ticari_otomasyon
         {
             InitializeComponent();
         }
-        ÜRÜNLER fr;
+        URUNLER fr;
         private void BtnUrunler_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
             if (fr == null)
             {
-                fr = new ÜRÜNLER();
+                fr = new URUNLER();
                 fr.MdiParent = this;
                 fr.Show();
+            }
+        }
+        MUSTERILER fr2;
+        private void BtnMusteriler_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (fr2 == null)
+            {
+                fr2 = new MUSTERILER();
+                fr2.MdiParent = this;
+                fr2.Show();
             }
         }
     }
