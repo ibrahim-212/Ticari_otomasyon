@@ -17,6 +17,7 @@ namespace Ticari_otomasyon
             InitializeComponent();
         }
         sqlbaglantisi bgl = new sqlbaglantisi();
+        MUSTERILER musteri;
         void firmalistesi()
         {
             SqlDataAdapter da = new SqlDataAdapter("Select *  from TBL_FIRMALAR",bgl.baglanti());
@@ -24,9 +25,23 @@ namespace Ticari_otomasyon
             da.Fill(dt);
             gridControl1.DataSource= dt;
         }
+        void sehirlistesi()
+        {
+            SqlCommand komut = new SqlCommand("select SEHIR from TBL_ILLER", bgl.baglanti());
+            SqlDataReader dr = komut.ExecuteReader();
+            while (dr.Read())
+            {
+                CmbIL.Properties.Items.Add(dr[0]);
+
+            }
+            bgl.baglanti().Close();
+        }
+
         private void FIRMALAR_Load(object sender, EventArgs e)
         {
             firmalistesi();
+
+            sehirlistesi();
 
         }
 
@@ -70,6 +85,51 @@ namespace Ticari_otomasyon
 
 
             }
+        }
+
+        private void Kaydet_Click(object sender, EventArgs e)
+        {
+            SqlCommand komut2 = new SqlCommand("Select ID From TBL_ILCELER where ILCE = @p1", bgl.baglanti());
+            komut2.Parameters.AddWithValue("@p1", CmbILCE.SelectedItem);
+            SqlDataReader dr = komut2.ExecuteReader();
+            dr.Read();
+            SqlCommand komut = new SqlCommand(" insert into TBL_FIRMALAR VALUES(@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11,@p12,@p13,@p14,@p15,@p16,@p17,@p18)", bgl.baglanti());
+            komut.Parameters.AddWithValue("@p2", TxtAd.Text);
+            komut.Parameters.AddWithValue("@p3", TxtYGörev.Text);
+            komut.Parameters.AddWithValue("@p4", TxtYetkiliAd.Text);
+            komut.Parameters.AddWithValue("@p5", TxtYetkiliSoyad.Text);
+            komut.Parameters.AddWithValue("@p6", MskTc.Text);
+            komut.Parameters.AddWithValue("@p7", TxtSektor.Text);
+            komut.Parameters.AddWithValue("@p8", MskTel1.Text);
+            komut.Parameters.AddWithValue("@p9", MskTel2.Text);
+            komut.Parameters.AddWithValue("@p10", MskTel3.Text);
+            komut.Parameters.AddWithValue("@p11", TxtMail.Text);
+            komut.Parameters.AddWithValue("@p12", MskFax.Text);
+            komut.Parameters.AddWithValue("@p13",dr[0].ToString());
+            komut.Parameters.AddWithValue("@p14", TxtVergi.Text);
+            komut.Parameters.AddWithValue("@p15", RchtAdres.Text);
+            komut.Parameters.AddWithValue("@p16", TxtOzelKod1.Text);
+            komut.Parameters.AddWithValue("@p17", TxtOzelKod2.Text);
+            komut.Parameters.AddWithValue("@p18", TxtOzelKod3.Text);
+
+            komut.ExecuteNonQuery();
+            bgl.baglanti().Close();
+            MessageBox.Show("Başarıyla Eklendi");
+            firmalistesi();
+        }
+
+        private void CmbIL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CmbILCE.Properties.Items.Clear();
+            SqlCommand komut = new SqlCommand("Select ILCE from TBL_ILCELER Where SEHIR=@p1 ", bgl.baglanti());
+            komut.Parameters.AddWithValue("@p1", CmbIL.SelectedIndex + 1);
+            SqlDataReader dr = komut.ExecuteReader();
+            while (dr.Read())
+            {
+                CmbILCE.Properties.Items.Add(dr[0]);
+
+            }
+            bgl.baglanti().Close();
         }
     }
 }

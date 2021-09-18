@@ -25,7 +25,7 @@ namespace Ticari_otomasyon
             da.Fill(dt);
             gridControl1.DataSource = dt;
         }
-        void sehirlistesi()
+     void sehirlistesi()
         {
             SqlCommand komut = new SqlCommand("select SEHIR from TBL_ILLER",bgl.baglanti());
             SqlDataReader dr = komut.ExecuteReader();
